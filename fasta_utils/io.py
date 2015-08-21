@@ -50,7 +50,7 @@ def iterFasta(path):
             seqLst.clear()
         elif header is not None:
             seqLst.append(line)
-    elif header is not None:
+    if header is not None:
         seq = ''.join(seqLst)
         yield header, seq
 
@@ -87,3 +87,14 @@ def loadFastaStrList(path):
     for header, seq in iterFasta(path):
         sequences.append(seq)
     return sequences
+
+def writeFastaSequence(handle, header, sequence):
+    '''Writes one sequence out to a handle in fasta format
+
+    Args:
+        handle - output handle
+        header - fasta header
+        sequence - fasta sequence
+    '''
+
+    handle.write('>%s\n%s\n' % (header, sequence))
