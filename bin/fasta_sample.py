@@ -2,7 +2,6 @@
 
 import argparse
 import random
-import re
 import sys
 
 import fasta_utils.io

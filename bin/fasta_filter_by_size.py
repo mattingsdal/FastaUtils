@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import random
-import re
 import sys
 
 import fasta_utils.io
@@ -33,13 +31,11 @@ def getArgs():
 def main():
     args    = getArgs()
     inputs  = [None]
-    minSize = args.smaller_than
-    maxSize = args.lager_than
+    maxSize = args.smaller_than
+    minSize = args.larger_than
     out     = sys.stdout
     if args.output:
         out = openMaybeCompressed(args.output, 'w')
-    if not args.seed is None:
-        random.seed(args.seed)
     if args.input:
         inputs = args.input
     for path in inputs:
