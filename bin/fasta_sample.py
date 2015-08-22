@@ -9,10 +9,10 @@ import fasta_utils.io
 
 
 def getArgs():
-    parser = argparse.ArgumentParser(description='Finds sequences matching a pattern')
+    parser = argparse.ArgumentParser(description='Randomly sample sequences')
     parser.add_argument('input',
                         nargs='*',
-                        help='Input fasta file')
+                        help='Input fasta file(s)')
     parser.add_argument('-n',
                         '--number',
                         metavar='NUM',
@@ -55,7 +55,7 @@ def main():
     if args.output:
         out = openMaybeCompressed(args.output, 'w')
     for header, sequence in sampled:
-        fasta_utils.io.writeFastaSequence(out, header, sequence, 100)
+        fasta_utils.io.writeFastaSequence(out, header, sequence)
     if args.output:
         out.close()
 

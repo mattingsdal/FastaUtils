@@ -13,7 +13,7 @@ def getArgs():
                         help='Search pattern')
     parser.add_argument('input',
                         nargs='*',
-                        help='Input fasta file')
+                        help='Input fasta file(s)')
     parser.add_argument('-c',
                         '--count',
                         action='store_true',
