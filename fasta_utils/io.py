@@ -3,6 +3,9 @@
 import sys
 
 
+LINE_WIDTH = 100
+
+
 def openMaybeCompressed(path, mode='rt'):
     '''Opens a file that might be compressed in gzip, bzip2, or xz format
 
@@ -88,13 +91,23 @@ def loadFastaStrList(path):
         sequences.append(seq)
     return sequences
 
-def writeFastaSequence(handle, header, sequence):
+def writeFastaSequence(handle, header, sequence, lineWidth=LINE_WIDTH):
     '''Writes one sequence out to a handle in fasta format
 
     Args:
         handle - output handle
         header - fasta header
         sequence - fasta sequence
+        lineWidth - characters per line for the sequence, values of zero or
+            less mean the whole sequence will be printed on a single line
     '''
 
-    handle.write('>%s\n%s\n' % (header, sequence))
+    if lineWidth > 0:
+        handle.write('>%s\n' % header)
+        size = len(sequence)
+        i = 0
+        while i < size:
+            handle.write('%s\n' % sequence[i:i + lineWidth])
+            i += lineWidth
+    else:
+        handle.write('>%s\n%s\n' % (header, sequence))
