@@ -22,6 +22,16 @@ def getArgs():
                         '--search-sequence',
                         action='store_true',
                         help='Search sequences for pattern instead of header')
+    parser.add_argument('-f',
+                        '--start',
+                        metavar='POS',
+                        type=int,
+                        help='Extract subsequence starting at this position (zero-based, inclusive)')
+    parser.add_argument('-e',
+                        '--end',
+                        metavar='POS',
+                        type=int,
+                        help='Extract subsequence up to this position (zero-based, exclusive)')
     parser.add_argument('-m',
                         '--max-count',
                         metavar='NUM',
@@ -51,7 +61,16 @@ def main():
             if matched:
                 count += 1
                 if not args.count:
-                    fasta_utils.io.writeFastaSequence(sys.stdout, header, sequence)
+                    if args.start is None and args.end is None:
+                        fasta_utils.io.writeFastaSequence(sys.stdout, header, sequence)
+                    else:
+                        start = 0
+                        end   = length(sequence)
+                        if not args.start is None and args.start > 0 and args.start < end:
+                            start = args.start
+                        if not args.end is None and args.end > 0 and args.end <= end and args.end > start:
+                            end = args.end
+                        fasta_utils.io.writeFastaSequence(sys.stdout, header, sequence[start:end])
                 if args.count > 0 and count == args.count:
                     maxed = True
                     break
