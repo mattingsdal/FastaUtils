@@ -1,3 +1,12 @@
-# fasta_utils
+# FastaUtils
 
-A few utilities for common fasta file manipulations
+A few utilities for common fasta file manipulations.
+
+Supports input and output in common compression formats and on the standard
+input/output.
+
+ * fasta_assembly_stats.py: assembly statistics (n50, min, max, mean, ..., letter content)
+ * fasta_filter_by_size.py: get sequences within a certain size range
+ * fasta_get_largest.py: get the largest sequence(s) from a file
+ * fasta_grep.py: extract sequences where the header matches a certain pattern
+ * fasta_sample.py: gets a random sample of sequences
