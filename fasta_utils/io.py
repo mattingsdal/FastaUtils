@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import bzip2
+import gzip
+import lzma
 import sys
 
 
