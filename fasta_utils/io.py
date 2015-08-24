@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import bzip2
+import bz2
 import gzip
 import lzma
 import sys
@@ -19,7 +19,7 @@ def openMaybeCompressed(path, mode='rt'):
 
     handle = None
     if path.endswith('.bz2'):
-        handle = bzip2.open(path, mode)
+        handle = bz2.open(path, mode)
     elif path.endswith('.gz'):
         handle = gzip.open(path, mode)
     elif path.endswith('.xz'):
