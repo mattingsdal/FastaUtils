@@ -12,5 +12,5 @@ setup(name='Distutils',
       author='Sylvain FORET',
       author_email='sylvain.foret@anu.edu.au',
       url='http://dna.anu.edu.au',
-      packages=['bee_tracker'],
+      packages=['fasta_utils'],
       scripts=scripts)
