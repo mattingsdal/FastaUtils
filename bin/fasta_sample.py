@@ -52,7 +52,7 @@ def main():
     # Write output
     out = sys.stdout
     if args.output:
-        out = openMaybeCompressed(args.output, 'w')
+        out = fasta_utils.io.openMaybeCompressed(args.output, 'w')
     for header, sequence in sampled:
         fasta_utils.io.writeFastaSequence(out, header, sequence)
     if args.output:
