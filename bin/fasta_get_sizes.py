@@ -23,7 +23,7 @@ def main():
     inputs  = [None]
     out     = sys.stdout
     if args.output:
-        out = openMaybeCompressed(args.output, 'w')
+        out = fasta_utils.io.openMaybeCompressed(args.output, 'w')
     if args.input:
         inputs = args.input
     for path in inputs:

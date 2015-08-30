@@ -57,7 +57,7 @@ def main():
     # Write output
     out = sys.stdout
     if args.output:
-        out = openMaybeCompressed(args.output, 'w')
+        out = fasta_utils.io.openMaybeCompressed(args.output, 'w')
     out.write('Total    : %d\n' % total)
     out.write('Number   : %d\n' % n)
     out.write('Smallest : %d\n' % min(sizes))
