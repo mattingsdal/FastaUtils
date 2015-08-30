@@ -21,8 +21,6 @@ def getArgs():
 def main():
     args    = getArgs()
     inputs  = [None]
-    maxSize = args.smaller_than
-    minSize = args.larger_than
     out     = sys.stdout
     if args.output:
         out = openMaybeCompressed(args.output, 'w')
